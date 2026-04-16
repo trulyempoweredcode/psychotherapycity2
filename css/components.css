@@ -124,6 +124,7 @@
 .nav__cta {
   font-size: var(--text-sm);
   padding: var(--space-sm) var(--space-lg);
+  font-weight: 600;
 }
 
 /* Mobile Menu Toggle */
@@ -2356,15 +2357,28 @@ a.card--service:hover .card__link {
 
 /* Feature Card Variant */
 .card--feature {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: var(--space-lg) 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .card--feature:hover {
-  box-shadow: none;
-  transform: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.card--feature .card__icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* On alt sections, swap surface → surface-alt so card still pops */
+.section--alt .card--feature {
+  background-color: var(--color-surface);
 }
 
 /* =============================================
@@ -3068,6 +3082,19 @@ a.card--service:hover .card__link {
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-light);
     box-shadow: var(--shadow-sm);
+    /* Cap height so long link lists can scroll within the sidebar
+       instead of disappearing below the viewport when sticky */
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .services-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .services-sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 3px;
   }
 }
 
@@ -3616,11 +3643,15 @@ a.card--service:hover .card__link {
 .split--bleed {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: center;
 }
 
 .split--bleed .split__image {
   width: 100%;
   aspect-ratio: 4 / 3;
+  height: auto;
+  max-height: 80vh;
+  align-self: center;
   object-fit: cover;
   border-radius: 0;
 }
@@ -3648,12 +3679,15 @@ a.card--service:hover .card__link {
   .split--bleed {
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    align-items: stretch;
+    align-items: center;
   }
 
   .split--bleed .split__image {
-    height: 100%;
-    aspect-ratio: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
   }
 
   .split--bleed .split__content {
@@ -3846,7 +3880,9 @@ a.card--service:hover .card__link {
   text-align: center;
 }
 
-.highlight-box__heading h3 {
+.highlight-box__heading h2,
+.highlight-box__heading h3,
+.highlight-box__heading h4 {
   color: var(--color-text-inverse);
   font-size: var(--text-h3-desktop);
   line-height: var(--line-height-tight);
@@ -3886,7 +3922,9 @@ a.card--service:hover .card__link {
   text-align: left;
 }
 
-.highlight-box--soft .highlight-box__heading h3 {
+.highlight-box--soft .highlight-box__heading h2,
+.highlight-box--soft .highlight-box__heading h3,
+.highlight-box--soft .highlight-box__heading h4 {
   color: var(--color-text-heading);
 }
 
@@ -5264,11 +5302,10 @@ a.card--service:hover .card__link {
   flex-shrink: 0;
 }
 
-/* Dark variant (full-width band) */
+/* Dark variant — plum gradient bg with white text */
 .cta-inline--dark {
   background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
   color: var(--color-text-inverse);
-  border-radius: 0;
   padding: var(--space-2xl) var(--space-xl);
 }
 
@@ -5278,7 +5315,25 @@ a.card--service:hover .card__link {
 }
 
 .cta-inline--dark p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--text-base);
+}
+
+/* In dark CTA, secondary button inverts to outlined white-on-transparent */
+.cta-inline--dark .btn--secondary {
+  color: var(--color-text-inverse);
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+}
+
+.cta-inline--dark .btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Full-width band sub-variant — removes rounded corners when used as a section */
+.cta-inline--dark.cta-inline--band {
+  border-radius: 0;
 }
 
 @media (min-width: 768px) {
