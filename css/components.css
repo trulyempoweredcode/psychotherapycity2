@@ -3368,6 +3368,21 @@ a.card--service:hover .card__link {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Secondary meta line under subtitle (e.g. credentials strip on issue pages) */
+.page-header__meta {
+  margin-top: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.page-header--image .page-header__meta {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.page-header--dark .page-header__meta {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 .page-header--image .breadcrumb__link {
   color: rgba(255, 255, 255, 0.7);
 }
