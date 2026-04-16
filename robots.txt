@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trulyempoweredcode.github.io/psychotherapycity2/sitemap.xml
