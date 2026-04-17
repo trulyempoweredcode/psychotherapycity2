@@ -5309,6 +5309,48 @@ a.card--service:hover .card__link {
   padding: var(--space-2xl) var(--space-xl);
 }
 
+/* Full-width mid-page CTA: applied to a <section>.
+   Whole section is plum gradient, text left-aligned, button right-aligned. */
+.section.cta-mid-banner {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: var(--color-text-inverse);
+  padding: var(--space-2xl) 0;
+}
+
+.section.cta-mid-banner h2,
+.section.cta-mid-banner h3,
+.section.cta-mid-banner h4 {
+  color: var(--color-text-inverse);
+  margin-bottom: var(--space-xs);
+}
+
+.section.cta-mid-banner p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.cta-mid-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  text-align: left;
+}
+
+.cta-mid-banner__inner > :first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .cta-mid-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+}
+
 .cta-inline--dark h2,
 .cta-inline--dark h3 {
   color: var(--color-text-inverse);
